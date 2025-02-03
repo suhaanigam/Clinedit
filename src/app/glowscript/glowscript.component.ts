@@ -2,7 +2,7 @@ import { Component, AfterViewInit } from '@angular/core';
 
 declare const color: any;
 declare const vec: (x: number, y: number, z: number) => any;
-declare const box: (options: { pos: any; size: any; color: any }) => any;
+declare const curve: (options: { pos: any; color: any }) => any;
 declare const canvas: (options?: { width?: number; height?: number }) => any;
 declare const cylinder: any;
 declare const turns: number;
@@ -11,7 +11,6 @@ declare const radius: number;
 declare const width: 600;
 declare const height: 600;
 
-
 @Component({
   selector: 'app-glowscript',
   standalone: true,
@@ -19,9 +18,10 @@ declare const height: 600;
   templateUrl: './glowscript.component.html',
   styleUrls: ['./glowscript.component.css']
 })
-export class GlowscriptComponent implements AfterViewInit {
-  ngAfterViewInit(): void {
 
+export class GlowscriptComponent implements AfterViewInit {
+
+  ngAfterViewInit(): void {
       if (typeof window === 'undefined' || typeof document === 'undefined') {
           console.warn('GlowScript cannot run on the server. Skipping initialization.');
           return;
@@ -39,7 +39,7 @@ export class GlowscriptComponent implements AfterViewInit {
       // Initialize GlowScript
       (function () {
           function __main__() {
-            const scene = canvas({ width: 900, height: 600 }); // Create a 3D canvas
+            const scene = canvas({ width: 400, height: 600 }); // Create a 3D canvas
             scene.background = vec(0.06666666666, 0.42745098039, 0.49411764705);
 
             // DNA Helix Visualization
@@ -49,7 +49,7 @@ export class GlowscriptComponent implements AfterViewInit {
             const pitch = 10; // Vertical spacing between turns
             const turns = 20; // Number of turns in the helix
             const pointsPerTurn = 50; // Smoothness of the helix
-            const basePairsPerTurn = 4; // Number of base pairs per turn
+            const basePairsPerTurn = 8; // Number of base pairs per turn
 
             // Function to generate helix points
             function generateHelix(radius: number, pitch: number, turns: number, offset = 0) {
@@ -94,7 +94,6 @@ export class GlowscriptComponent implements AfterViewInit {
                 } else {
                   throw new Error('Invalid axis for rotation');
                 }
-
                 rotatedPoints.push(vec(x, y, z));
               }
 
@@ -122,31 +121,79 @@ export class GlowscriptComponent implements AfterViewInit {
             helix1 = rotatePoints(helix1, 'x', 90); // Rotate to stand vertically
             helix2 = rotatePoints(helix2, 'x', 90);
 
-            // Draw the helices
-            for (const point of helix1) {
-              box({ pos: point, size: vec(0.2, 0.2, 0.2), color: color.red });
-            }
+            const rnaHelix = curve({pos: helix1, color: vec(0.87, 0.92, 0.81)});
+            const sndRnaHelix = curve({pos: helix2, color: vec(0.87, 0.92, 0.81)});
 
-            for (const point of helix2) {
-              box({ pos: point, size: vec(0.2, 0.2, 0.2), color: color.blue });
-            }
-
-            // Add base pairs (cylinders between the helices)
+            const basePairs: Array<[typeof cylinder, typeof cylinder]> = [];
             const stepSize = Math.floor(pointsPerTurn / basePairsPerTurn);
             for (let i = 0; i < helix1.length; i += stepSize) {
-              const basePairStart = helix1[i];
-              const basePairEnd = helix2[i];
-              const midpoint = basePairStart.add(basePairEnd).div(2); // Midpoint for visual alignment
-              const axis = basePairEnd.sub(basePairStart);
+              // Calculate the midpoint
+              const midpoint = vec(
+                (helix1[i].x + helix2[i].x) / 2,
+                (helix1[i].y + helix2[i].y) / 2,
+                (helix1[i].z + helix2[i].z) / 2
+              );
 
-              // Add a cylinder to represent the base pair
-              cylinder({
-                pos: basePairStart,
-                axis: axis,
+              // Create the two half-cylinders
+              const basePair1 = cylinder({
+                pos: helix1[i],
+                axis: midpoint.sub(helix1[i]),
                 radius: 0.05,
-                color: color.green
+                color: vec(0.996, 0.949, 0.541)
               });
+
+              const basePair2 = cylinder({
+                pos: helix2[i],
+                axis: midpoint.sub(helix2[i]),
+                radius: 0.05,
+                color: vec(0.537, 0.588, 0.996)
+              });
+
+              // Store the cylinders
+              basePairs.push([basePair1, basePair2]);
             }
+
+            let time = 0;
+            function animate() {
+              time += 0.05;
+              for (let i = 0; i < helix1.length; i++) {
+                const angle = time * 0.3;
+                const cosA = Math.cos(angle);
+                const sinA = Math.sin(angle);
+
+                const newPos1 = vec(
+                  helix1[i].x * cosA + helix1[i].z * sinA, // Rotates around Y-axis
+                  helix1[i].y,
+                  -helix1[i].x * sinA + helix1[i].z * cosA
+                );
+
+                const newPos2 = vec(
+                  helix2[i].x * cosA + helix2[i].z * sinA, // Rotates around Y-axis
+                  helix2[i].y,
+                  -helix2[i].x * sinA + helix2[i].z * cosA
+                );
+
+                rnaHelix.modify(i, newPos1);
+                sndRnaHelix.modify(i, newPos2);
+
+                if (i % stepSize === 0) {
+                  const basePairIndex = Math.floor(i / stepSize);
+                  const midpoint = vec(
+                    (newPos1.x + newPos2.x) / 2,
+                    (newPos1.y + newPos2.y) / 2,
+                    (newPos1.z + newPos2.z) / 2
+                  );
+
+
+                  basePairs[basePairIndex][0].pos = newPos1;
+                  basePairs[basePairIndex][0].axis = midpoint.sub(newPos1);
+                  basePairs[basePairIndex][1].pos = newPos2;
+                  basePairs[basePairIndex][1].axis = midpoint.sub(newPos2);
+                }
+              }
+              requestAnimationFrame(animate);
+            }
+            animate();
           }
 
           // Bind GlowScript to the container
@@ -155,5 +202,3 @@ export class GlowscriptComponent implements AfterViewInit {
         })();
     }
 }
-
-
