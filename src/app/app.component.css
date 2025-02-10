@@ -35,15 +35,33 @@
   }
   .catch-page {
     background-color: #116d7e;
-    display: block;
-    height: 550px;
-    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+    height: 750px;
     margin-right: 20px;
     margin-left: 20px;
     margin-top: 20px;
     border-radius: 80px;
-    overflow: hidden;
+    /*overflow: hidden;*/
   }
+
+  .catch-text {
+    flex: 1; /* Takes up remaining space */
+    max-width: 50%; /* Ensures it does not exceed half the width */
+    padding-right: 20px; /* Adds spacing between text and the right side */
+    margin-top: 150px;
+    margin-left: 50px;
+  }
+
+  .glowscript-container {
+    flex: 1; /* Takes equal space as text */
+    max-width: 50%; /* Ensures it does not exceed half the width */
+    display: flex;
+    justify-content: center; /* Centers the glowscript content */
+    align-items: center; /* Centers vertically */
+    margin-right: 150px;
+  }
+
   .intro {
     font-family: Poppins, Roboto, Helvetica, Arial, sans-serif;
     box-sizing: border-box;
@@ -59,13 +77,13 @@
     text-align: center;
     color: #edf2e8;
     font-size: 1.1rem;
-    max-width: 800px;
+    max-width: 550px;
   }
   .catchphrase1 {
     font-family: Poppins, Roboto, Helvetica, Arial, sans-serif;
     font-weight: 200;
     line-height: 110%;
-    font-size: 65px;
+    font-size: 55px;
     text-align: center;
     color: #edf2e8;
     margin: 15px;
@@ -76,7 +94,7 @@
     font-family: Poppins, Roboto, Helvetica, Arial, sans-serif;
     font-weight: 200;
     line-height: 110%;
-    font-size: 65px;
+    font-size: 55px;
     text-align: center;
     color: #edf2e8;
     margin: 15px;
@@ -89,6 +107,7 @@
     align-items: center;
   }
 
+/*
 .products {
   text-align: center;
   padding: 10px;
@@ -98,15 +117,15 @@
 .slideshow {
   position: relative;
   display: flex;
-  flex-wrap: nowrap; /* Prevents wrapping */
+  flex-wrap: nowrap;
   justify-content: flex-start;
-  gap: 20px; /* Adds spacing between boxes */
+  gap: 20px;
   white-space: nowrap;
   overflow: hidden;
 }
 
 .product-box {
-  width: 280px; /* Adjust width as needed */
+  width: 280px;
   height: 350px;
   display: inline-block;
   border-radius: 10px;
@@ -169,9 +188,9 @@
 }
 
 .product-box:hover .view-product {
-  opacity: 1; /* Fully visible */
-  transform: translateY(0); /* Move to normal position */
-  pointer-events: all; /* Enable clicking */
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
 }
 
 .first:hover .view-product {
@@ -237,7 +256,6 @@
   user-select: none;
 }
 
-/* Position the "next button" to the right */
 .next {
   right: 10px;
   border-radius: 3px 0 0 3px;
@@ -247,8 +265,8 @@
   left: 10px;
 }
 
-/* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
   background-color: rgba(255,255,255,0.5);
 }
+*/
 
