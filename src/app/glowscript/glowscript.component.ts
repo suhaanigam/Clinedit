@@ -39,11 +39,11 @@ export class GlowscriptComponent implements AfterViewInit {
       // Initialize GlowScript
       (function () {
           function __main__() {
-            const scene = canvas({ width: 400, height: 600 }); // Create a 3D canvas
+            const scene = canvas({ width: 500, height: 730 }); // Create a 3D canvas
             scene.background = vec(0.06666666666, 0.42745098039, 0.49411764705);
             scene.userzoom = false;
             //scene.forward = vec(2,1,1)
-            scene.range = 5;
+            scene.range = 6;
 
             // DNA Helix Visualization
 
@@ -124,6 +124,9 @@ export class GlowscriptComponent implements AfterViewInit {
             helix1 = rotatePoints(helix1, 'x', 90); // Rotate to stand vertically
             helix2 = rotatePoints(helix2, 'x', 90);
 
+            helix1 = rotatePoints(helix1, 'z', -30); // Rotate to tilt
+            helix2 = rotatePoints(helix2, 'z', -30);
+
             const rnaHelix = curve({pos: helix1, color: vec(0.87, 0.92, 0.81), radius: 0.1});
             const sndRnaHelix = curve({pos: helix2, color: vec(0.87, 0.92, 0.81), radius: 0.1});
 
@@ -169,7 +172,7 @@ export class GlowscriptComponent implements AfterViewInit {
             }
 
             let time = 0;
-            const rotationAxis = vec(0, 1, 0); // Rotated Y-axis
+            const rotationAxis = vec(0.5, 0.866, 0); // Rotated Y-axis
             function animate() {
               time += 0.05;
               const angle = time * 0.3;
