@@ -1,111 +1,147 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
 
-  ul {
-    width: 100%;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  li a {
-    color: #116d7e;
-    font-size: 1rem;
-    font-family: Poppins,Roboto,Helvetica,Arial,sans-serif;
-    font-weight: 300;
-    display: block;
-    text-align: center;
-    padding: 20px 16px;
-    text-decoration: none;
-  }
-  li {
-    display: inline;
-    float: right;
-  }
+ul {
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li a {
+  color: #116d7e;
+  font-size: 1rem;
+  font-family: Poppins,Roboto,Helvetica,Arial,sans-serif;
+  font-weight: 300;
+  display: block;
+  text-align: center;
+  padding: 20px 16px;
+  text-decoration: none;
+}
+li {
+  display: inline;
+  float: right;
+}
 
-  img {
-    display: flex;
-    float: left;
-  }
+img {
+  display: flex;
+  float: left;
+}
 
-  .navbar {
-    display: flex;
-    flex: 1;
-    justify-content: space-evenly;
-    height: 60px;
-  }
-  .catch-page {
-    background-color: #116d7e;
-    display: flex;
-    justify-content: space-between;
-    height: 750px;
-    margin-right: 20px;
-    margin-left: 20px;
-    margin-top: 20px;
-    border-radius: 80px;
-    /*overflow: hidden;*/
-  }
+.navbar {
+  display: flex;
+  flex: 1;
+  justify-content: space-evenly;
+  height: 60px;
+}
+.catch-page {
+  background-color: #116d7e;
+  display: flex;
+  justify-content: space-between;
+  height: 750px;
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-top: 20px;
+  border-radius: 80px;
+  /*overflow: hidden;*/
+}
 
-  .catch-text {
-    flex: 1; /* Takes up remaining space */
-    max-width: 50%; /* Ensures it does not exceed half the width */
-    padding-right: 20px; /* Adds spacing between text and the right side */
-    margin-top: 150px;
-    margin-left: 50px;
-  }
+.catch-text {
+  flex: 1; /* Takes up remaining space */
+  max-width: 50%; /* Ensures it does not exceed half the width */
+  padding-right: 20px; /* Adds spacing between text and the right side */
+  margin-top: 150px;
+  margin-left: 50px;
+  justify-content: center
+}
 
-  .glowscript-container {
-    flex: 1; /* Takes equal space as text */
-    max-width: 50%; /* Ensures it does not exceed half the width */
-    display: flex;
-    justify-content: center; /* Centers the glowscript content */
-    align-items: center; /* Centers vertically */
-    margin-right: 150px;
-  }
+.glowscript-container {
+  flex: 1; /* Takes equal space as text */
+  max-width: 50%; /* Ensures it does not exceed half the width */
+  display: flex;
+  justify-content: center; /* Centers the glowscript content */
+  align-items: center; /* Centers vertically */
+  margin-right: 150px;
+}
 
-  .intro {
+.intro {
+  font-family: Poppins, Roboto, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+  margin-top: -10px;
+  font-weight: 700;
+  text-align: center;
+  color: #edf2e8;
+}
+.summary {
+  font-family: Poppins, Roboto, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+  font-weight: 300;
+  text-align: center;
+  color: #edf2e8;
+  font-size: 1.1rem;
+  max-width: 550px;
+}
+.catchphrase1 {
+  font-family: Poppins, Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 200;
+  line-height: 110%;
+  font-size: 55px;
+  text-align: center;
+  color: #edf2e8;
+  margin: 15px;
+  text-align: center;
+  transform: translateX(0%);
+}
+.catchphrase2 {
+  font-family: Poppins, Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 200;
+  line-height: 110%;
+  font-size: 55px;
+  text-align: center;
+  color: #edf2e8;
+  margin: 15px;
+  text-align: center;
+  transform: translateX(10%);
+}
+.centered-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.download-btn {
     font-family: Poppins, Roboto, Helvetica, Arial, sans-serif;
-    box-sizing: border-box;
-    margin-top: -10px;
-    font-weight: 700;
-    text-align: center;
-    color: #edf2e8;
-  }
-  .summary {
-    font-family: Poppins, Roboto, Helvetica, Arial, sans-serif;
-    box-sizing: border-box;
-    font-weight: 300;
-    text-align: center;
-    color: #edf2e8;
-    font-size: 1.1rem;
-    max-width: 550px;
-  }
-  .catchphrase1 {
-    font-family: Poppins, Roboto, Helvetica, Arial, sans-serif;
-    font-weight: 200;
-    line-height: 110%;
-    font-size: 55px;
-    text-align: center;
-    color: #edf2e8;
-    margin: 15px;
-    text-align: center;
-    transform: translateX(0%);
-  }
-  .catchphrase2 {
-    font-family: Poppins, Roboto, Helvetica, Arial, sans-serif;
-    font-weight: 200;
-    line-height: 110%;
-    font-size: 55px;
-    text-align: center;
-    color: #edf2e8;
-    margin: 15px;
-    text-align: center;
-    transform: translateX(10%);
-  }
-  .centered-text {
+    background-color: white;
+    color: black;
+    line-height: 20px;
+    border: none;
+    padding: 10px 20px;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 20px;
+    height: 40px;
+}
+
+.download-btn:hover {
+    background-color: lightgray;
+}
+
+.button-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-  }
+    margin-top: 50px;
+}
+
+.download-btn svg {
+    width: 20px;  /* Keep icon at a controlled size */
+    height: 20px;
+    position: relative;
+    left: 4px;
+}
+
+.download-btn span {
+    position: relative;
+    bottom: 5px;
+}
 
 /*
 .products {
