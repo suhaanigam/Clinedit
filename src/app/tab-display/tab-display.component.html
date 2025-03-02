@@ -1,0 +1,14 @@
+<div class="tab-container">
+  <!-- Tabs -->
+  <div class="full-button">
+    <div class="tabs">
+      <button (click)="setActiveTab('Tab 1')" [class.active]="selectedTab === 'Tab 1'"> Track Research Participants </button>
+      <button (click)="setActiveTab('Tab 2')" [class.active]="selectedTab === 'Tab 2'"> Literature Review and Report Writing </button>
+      <button (click)="setActiveTab('Tab 3')" [class.active]="selectedTab === 'Tab 3'"> Compliance Assistance </button>
+    </div>
+  </div>
+
+  <div class="display-box">
+    {{ getDisplayContent() }}
+  </div>
+</div>
