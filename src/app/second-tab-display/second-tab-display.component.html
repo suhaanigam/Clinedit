@@ -1,0 +1,14 @@
+<div class="tab-container">
+  <!-- Tabs -->
+  <div class="full-button">
+    <div class="tabs">
+      <button (click)="setActiveTab('Tab 1')" [class.active]="selectedTab === 'Tab 1'"> Automated Analysis </button>
+      <button (click)="setActiveTab('Tab 2')" [class.active]="selectedTab === 'Tab 2'"> Organise Projects </button>
+      <button (click)="setActiveTab('Tab 3')" [class.active]="selectedTab === 'Tab 3'"> Group Calendar </button>
+    </div>
+  </div>
+
+  <div class="display-box">
+    {{ getDisplayContent() }}
+  </div>
+</div>

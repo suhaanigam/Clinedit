@@ -1,0 +1,38 @@
+.display-box {
+  padding: 20px;
+  background: white;
+  min-height: 200px;
+}
+
+.full-button {
+  display: flex;
+  justify-content: center;
+}
+
+.tabs {
+  display: flex;
+  border-radius: 10px;
+  overflow: hidden;
+  min-width: 1000px;
+}
+
+.tabs button {
+  flex: 1;
+  background-color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  font-family: Poppins, Roboto, Helvetica, Arial, sans-serif;
+}
+
+.tabs button:not(.active) {
+  background-color: #97acb5;
+}
+
+.tabs button.active {
+  background-color: #116d7e;
+  color: white;
+}

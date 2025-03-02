@@ -30,12 +30,66 @@
       <app-glowscript></app-glowscript>
     </div>
   </div>
+  <div class="slogan">
+    <h2> Organising Clinical Research Projects is Freaking <del>Hard</del> Easy </h2>
+  </div>
+  <div class="research-types">
+    <div class="box"> Randomized Controlled Trial </div>
+    <div class="box"> Cohort Study </div>
+    <div class="box"> Case-Control Study </div>
+    <div class="box"> Cross-Sectional Study </div>
+    <div class="box"> Longitudinal Study </div>
+    <div class="box"> Meta-Analysis </div>
+    <div class="box"> Systematic Review </div>
+    <div class="box"> Post Marketing Surveillance (Phase IV Trial) </div>
+    <div class="box"> Adaptive Clinical Trial </div>
+    <div class="box"> Crossover Study </div>
+    <div class="box"> Quasi-Experimental Study </div>
+    <div class="box"> Case Series / Case Report</div>
+    <div class="box"> Ecological Study </div>
+    <div class="box"> Registry-Based Study </div>
+    <div class="box"> Stepped Wedge Trial </div>
+    <div class="box"> N-of-1 Trial</div>
+  </div>
+  <app-tab-display></app-tab-display>
+  <app-second-tab-display></app-second-tab-display>
+  <div class="meet-the-team">
+    <h2> Meet The Team </h2>
+    <div class="split-display">
+      <div class="Ananya">
+        <img style="width: 400px; height: 300px; object-fit: cover;" src="assets/ananya.jpg"/>
+        <h2> Ananya Shahi </h2>
+        <p> Hi! I'm Ananya – co-founder of ClinEdit! With a background in Computer Science and a passion for AI,
+          I love finding ways to make healthcare workflows smoother and more efficient. At ClinEdit,
+          I focus on automating tasks, managing calendars, and building applications that help streamline clinical editing.
+          For me, it’s all about using tech to make a real impact in healthcare!
+        </p>
+      </div>
+      <div class="Suhaani">
+        <img style="width: 400px; height: 300px; object-fit: cover;" src="assets/Suhaani.jpg"/>
+      </div>
+    </div>
+  </div>
+  <div class="questions">
+    <p class="any-questions"> ...Any Questions? </p>
+    <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
+      <!-- Email Input -->
+      <label for="email" class="email">Email Address</label>
+      <input id="email" type="email" formControlName="email" placeholder="Enter your email" required />
+
+      <!-- Comment Box -->
+      <label for="comment" class="comment">Your Comment/Question</label>
+      <textarea id="comment" formControlName="comment" placeholder="Write your message here..." required></textarea>
+
+      <button type="submit" [disabled]="contactForm.invalid">Send</button>
+    </form>
+  </div>
   <div class="customers">
     <div class="heading">
       <h2> We partner with... </h2>
     </div>
     <div class="grid">
-      <div class="row-one">
+      <div class="grid-row-one">
         <div class="circle">
           <p> Clinical Research Organisations </p>
         </div>
@@ -43,7 +97,7 @@
           <p> Pharmaceutical Companies </p>
         </div>
       </div>
-      <div class="row-two">
+      <div class="grid-row-two">
         <div class="circle">
           <p> Academic Institutions </p>
         </div>
@@ -56,85 +110,13 @@
       </div>
     </div>
   </div>
+  <div class="footer">
+    <div class="footer-column">About Us</div>
+    <div class="footer-column">Account</div>
+    <div class="footer-column">Socials</div>
+    <div class="footer-column">Column 4 Content</div>
+    <div class="footer-column">Column 5 Content</div>
+  </div>
 </main>
 
 <router-outlet />
-  <!--
-  <div class="products">
-    <p class="products-p">Unlock AI-Powered Solutions</p>
-    <div class="slideshow">
-      <div class="slide fade">
-        <div class="first product-box">
-          <h3> Automated Exploratory Data Analysis </h3>
-          <button class="view-product">View Product</button>
-          <i class="fa-solid fa-arrow-right"></i>
-        </div>
-      </div>
-      <div class="slide fade">
-        <div class="second product-box">
-          <h3> AI for Literature Review </h3>
-          <button class="view-product">View Product</button>
-          <i class="fa-solid fa-arrow-right"></i>
-        </div>
-      </div>
-      <div class="slide fade">
-        <div class="third product-box">
-          <h3> Correlation Analysis </h3>
-          <button class="view-product">View Product</button>
-          <i class="fa-solid fa-arrow-right"></i>
-        </div>
-      </div>
-      <div class="slide fade">
-        <div class="fourth product-box">
-          <h3> Prediction Analysis </h3>
-          <button class="view-product">View Product</button>
-          <i class="fa-solid fa-arrow-right"></i>
-        </div>
-      </div>
-      <div class="slide fade">
-        <div class="fifth product-box">
-          <h3> Population Analysis </h3>
-          <button class="view-product">View Product</button>
-          <i class="fa-solid fa-arrow-right"></i>
-        </div>
-      </div>
-      <div class="slide fade">
-        <div class="first product-box">
-          <h3> Generative AI Models </h3>
-          <button class="view-product">View Product</button>
-          <i class="fa-solid fa-arrow-right"></i>
-        </div>
-      </div>
-      <div class="slide fade">
-        <div class="second product-box">
-          <h3> Image-Based Models </h3>
-          <button class="view-product">View Product</button>
-          <i class="fa-solid fa-arrow-right"></i>
-        </div>
-      </div>
-      <div class="slide fade">
-        <div class="third product-box">
-          <h3> Drug Discovery Models </h3>
-          <button class="view-product">View Product</button>
-          <i class="fa-solid fa-arrow-right"></i>
-        </div>
-      </div>
-      <div class="slide fade">
-        <div class="fourth product-box">
-          <h3> Automation of Relational Databases </h3>
-          <button class="view-product">View Product</button>
-          <i class="fa-solid fa-arrow-right"></i>
-        </div>
-      </div>
-      <div class="slide fade">
-        <div class="fifth product-box">
-          <h3> AI for Personalized Medicine </h3>
-          <button class="view-product">View Product</button>
-          <i class="fa-solid fa-arrow-right"></i>
-        </div>
-      </div>
-      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-  </div>
-  -->
